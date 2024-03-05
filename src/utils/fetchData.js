@@ -22,9 +22,9 @@ import axios from 'axios'
 
 export const options = {
 
-  params: { limit: '500' },
+  params: { limit: '50' },
   headers: {
-    'X-RapidAPI-Key': 'b141a89043mshf58a168c1c6c8c5p1b89fcjsn42cd0cfa0b92',
+    'X-RapidAPI-Key': '3e520af111msh3b67615f80800c5p103017jsna2ee9b2280d4',
     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
   }
 }
