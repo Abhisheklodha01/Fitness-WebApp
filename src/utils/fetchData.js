@@ -2,7 +2,7 @@ import axios from 'axios'
 // const options = {
 //             method: 'GET',
 //             headers: {
-//               'X-RapidAPI-Key': Process.env.REACT_APP_RAPIDAPI_KEY,
+//               'X-RapidAPI-Key': 'b141a89043mshf58a168c1c6c8c5p1b89fcjsn42cd0cfa0b92',
 //               'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
 //             }
 //           };
@@ -24,10 +24,10 @@ export const options = {
 
   params: { limit: '500' },
   headers: {
-    'X-RapidAPI-Key': Process.env.REACT_APP_RAPIDAPI_KEY,
+    'X-RapidAPI-Key': 'b141a89043mshf58a168c1c6c8c5p1b89fcjsn42cd0cfa0b92',
     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
   }
-};
+}
 
 
 export const fetchData = async (url, options) => {
@@ -39,7 +39,7 @@ export const YoutubeOptions = {
   method: 'GET',
 
   headers: {
-    'X-RapidAPI-Key': Process.env.REACT_APP_RAPIDAPI_KEY,
+    'X-RapidAPI-Key': 'b141a89043mshf58a168c1c6c8c5p1b89fcjsn42cd0cfa0b92',
     'X-RapidAPI-Host': 'youtube-search-and-download.p.rapidapi.com'
   }
 };
