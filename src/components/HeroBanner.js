@@ -52,7 +52,7 @@ const HeroBanner = () => {
       >
         Exercise</Typography>
       <img
-        className='hero-banner-img'
+        className='hero-banner-img '
         src={HeroBannerImage}
         alt='banner'
       />
