@@ -15,18 +15,18 @@ const Footer = () => {
        pt="24px"
       >
         <img 
-        src='https://i.pinimg.com/736x/02/91/32/029132c8642f5f5d61f61213426e38d1.jpg'
+        src='https://static.vecteezy.com/system/resources/previews/009/130/901/non_2x/jsr-logo-jsr-letter-jsr-letter-logo-design-initials-jsr-logo-linked-with-circle-and-uppercase-monogram-logo-jsr-typography-for-technology-business-and-real-estate-brand-vector.jpg'
          alt='logo'
          width="100px"
          height="80px"
-         style={{mixBlendMode:'multiply'}}
+         className='rounded-lg'
          />
          <Typography
            variant='h5'
            mt="20px"
            pb="40px"
           >
-          Made with ❤️ by Abhishek Lodha
+          Made with ❤️ by JSR Team
          </Typography>
 
       </Stack>
