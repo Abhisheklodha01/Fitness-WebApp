@@ -1,0 +1,1 @@
+export const server = "https://fitness-app-backend-cp21.onrender.com/api/v1"

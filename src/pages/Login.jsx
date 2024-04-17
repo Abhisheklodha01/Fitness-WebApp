@@ -1,9 +1,50 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { server } from "../utils/constants.js";
+import toast, { Toaster } from "react-hot-toast";
+import { Context } from "../index.js";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { setIsAuthenticated, setUser } = useContext(Context);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const submitHandeler = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        `${server}/users/login`,
+        {
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      ).then((response)=> response.data)
+      toast.success(res.message, {
+        position: "top-center",
+      });
+      setIsAuthenticated(true);
+      setUser(res.user)
+      setEmail("");
+      setPassword("");
+      navigate("/home");
+    } catch (error) {
+      toast.error(error.response.data.message);
+      console.log(error);
+      setIsAuthenticated(false)
+    }
+  };
   return (
     <section className="bg-gray-600 mt-2">
+      <div>
+        <Toaster />
+      </div>
       <div
         className="flex flex-col items-center
                     justify-center px-6 py-8
@@ -22,7 +63,7 @@ const Login = () => {
             >
               Welcome back
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" onSubmit={submitHandeler}>
               <div>
                 <label
                   htmlFor="email"
@@ -42,6 +83,7 @@ const Login = () => {
                 focus:border-blue-500"
                   placeholder="enter your email"
                   required
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>
@@ -62,16 +104,18 @@ const Login = () => {
                          text-white focus:ring-blue-500
                           focus:border-blue-500"
                   required
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
                 />
-                 <p className="mt-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                Don't have an account?{" "}
-                <Link
-                  to="/signup"
-                  className=" font-medium text-primary-600 hover:underline dark:text-primary-500"
-                >
-                  <span style={{ color: "blue" }}>Signup here</span>
-                </Link>
-              </p>
+                <p className="mt-2 text-sm font-light text-gray-500 dark:text-gray-400">
+                  Don't have an account?{" "}
+                  <Link
+                    to="/signup"
+                    className=" font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  >
+                    <span style={{ color: "blue" }}>Signup here</span>
+                  </Link>
+                </p>
                 <button
                   type="submit"
                   className="mt-5 py-2 px-8 bg-gradient-to-r from-cyan-600
@@ -85,7 +129,7 @@ const Login = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
