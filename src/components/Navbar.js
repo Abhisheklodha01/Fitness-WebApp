@@ -110,7 +110,7 @@ const Navbar = () => {
 
       <div
         onClick={() => setNav(!nav)}
-        className="md:hidden cursor-pointer pr-4 z-10 mt-4 text-gray-300"
+        className="md:hidden cursor-pointer pr-4  mt-4 text-gray-300 z-20 mr-14"
       >
         {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
       </div>
@@ -122,7 +122,7 @@ const Navbar = () => {
               isAuthenticated === false ? (
                 <ul className="flex flex-col justify-center
                           items-center absolute top-0 left-0
-                          w-full h-screen bg-black text-gray-200 ">
+                          w-full h-screen bg-black text-gray-200 z-10 ">
                   <li className="x-4 cursor-pointer capitalize py-6 text-4xl">
                     <Link
                       className="py-3 px-4 border-1  rounded-lg

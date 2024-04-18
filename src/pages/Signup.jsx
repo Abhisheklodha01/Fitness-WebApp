@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../utils/constants.js";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { Context } from "../index.js";
 
 const Signup = () => {
@@ -39,7 +39,6 @@ const Signup = () => {
       setPassword("");
     } catch (error) {
       toast.error(error.response.data.message);
-      console.log(error);
       setIsAuthenticated(false);
       setEmail("");
       setUsername("");
@@ -48,9 +47,6 @@ const Signup = () => {
   };
   return (
     <section className="bg-gray-600 mt-2">
-      <div>
-        <Toaster />
-      </div>
       <div
         className="flex flex-col items-center
                     justify-center px-6 py-8
