@@ -10,9 +10,9 @@ import { Context } from '../index.js'
 const Home = () => {
   const navigate = useNavigate()
   const { isAuthenticated, user } = useContext(Context)
-  // if (isAuthenticated === false) {
-  //   navigate("/")
-  // }
+  if (isAuthenticated === false) {
+    navigate("/")
+  }
   const [exercises, setExercises] = useState([])
   const [bodyPart, setBodyPart] = useState('all')
   return (
