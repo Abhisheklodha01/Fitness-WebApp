@@ -13,7 +13,7 @@ const Login = () => {
   const submitHandeler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
+      const {data} = await axios.post(
         `${server}/users/login`,
         {
           email,
@@ -25,12 +25,12 @@ const Login = () => {
           },
           withCredentials: true,
         }
-      ).then((response)=> response.data)
-      toast.success(res.message, {
+      )
+      toast.success(data.message, {
         position: "top-center",
       });
       setIsAuthenticated(true);
-      setUser(res.user)
+      setUser(data.user)
       setEmail("");
       setPassword("");
       navigate("/home");

@@ -12,7 +12,7 @@ const Navbar = () => {
   const [nav, setNav] = useState(false)
   const LogoutHandler = async () => {
     try {
-      const res = await axios.post(`${server}/users/logout`, {
+      await axios.post(`${server}/users/logout`, {
         withCredentials: true,
       })
       toast.success("Logged out successfully", {
@@ -68,7 +68,7 @@ const Navbar = () => {
                 bg-gradient-to-r from-cyan-600 to-blue-600 text-lg"
                   to="/user"
                 >
-                  {user.username}
+                  My Profile
                 </Link>
               </li>
               <li>
@@ -110,19 +110,19 @@ const Navbar = () => {
 
       <div
         onClick={() => setNav(!nav)}
-        className="md:hidden cursor-pointer pr-4  mt-4 text-gray-300 z-20 mr-14"
+        className="md:hidden cursor-pointer pr-4  mt-4 text-gray-300 z-20 "
       >
-        {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
+        {nav ? <FaTimes size={30} className="mr-14" /> : <FaBars size={30} />}
       </div>
 
       {
         nav ? (
-          <div className=" flex flex-col bg-gray-800">
+          <div className=" flex flex-col bg-gray-700 z-10">
             {
               isAuthenticated === false ? (
                 <ul className="flex flex-col justify-center
                           items-center absolute top-0 left-0
-                          w-full h-screen bg-black text-gray-200 z-10 ">
+                          w-full h-screen bg-gray-700 text-gray-200 ">
                   <li className="x-4 cursor-pointer capitalize py-6 text-4xl">
                     <Link
                       className="py-3 px-4 border-1  rounded-lg
@@ -147,26 +147,26 @@ const Navbar = () => {
               ) : (
                 <ul className="flex flex-col justify-center
                 items-center absolute top-0 left-0
-                w-full h-screen bg-gray-800 text-gray-200 bg-cover ">
+                w-full h-screen bg-gray-700 text-gray-200 bg-cover ">
                   <li className="x-4 cursor-pointer capitalize py-6 text-4xl">
                     <Link
                       className="py-3 px-4 border-1  rounded-lg
                       bg-gradient-to-r from-cyan-600 to-blue-600 text-lg"
-                      to="/home"
                       onClick={()=> setNav(false)}
+                      to={"/user"}
                     >
-                      {user.username}
+                      My Profile
                     </Link>
                   </li>
                   <li className="x-4 cursor-pointer capitalize py-6 text-4xl">
-                    <Link
-                      className="py-3 px-6 border-1  rounded-lg
+                    <button
+                      className="py-2 px-8 border-1  rounded-lg
                       bg-gradient-to-r from-sky-600 to-violet-700 text-lg"
-                      to="/login"
-                      onClick={()=> setNav(false)}
+                      to=""
+                      onClick={LogoutHandler}
                     >
                       Logout
-                    </Link>
+                    </button>
                   </li>
                 </ul>
               )

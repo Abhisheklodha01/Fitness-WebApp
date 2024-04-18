@@ -10,29 +10,14 @@ import HomePage from './pages/HomePage.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
 import './index.css'
-import axios from 'axios'
-import { server } from './utils/constants.js'
+
 import { Context } from './index.js'
 import { useState, useContext, useEffect } from 'react'
+import UserProfile from './components/UserProfile.jsx'
 
 
 
 function App() {
-  const { setUser, setIsAuthenticated, isAuthenticated } = useContext(Context);
- useEffect(()=> {
-  axios
-  .get(`${server}/users/userdetails`, {
-    withCredentials: true,
-  })
-  .then((res) => {
-    setUser(res.data.user), setIsAuthenticated(true), setLoader(false);
-  })
-  .catch((error) => {
-    setUser({}),
-      setIsAuthenticated(false),
-      error.response.data.message;
-  });
- }, [])
   return (
     <Box width="400px" sx={{ width: { xl: '1488px' } }} m='auto'>
       <BrowserRouter>
@@ -43,6 +28,7 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/home' element={<Home />} />
           <Route path='/exercise/:id' element={<ExerciseDetail />} />
+          <Route path='/user' element={<UserProfile />} />
         </Routes>
         <Footer />
       </BrowserRouter>
