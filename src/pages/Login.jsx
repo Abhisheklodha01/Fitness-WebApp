@@ -40,7 +40,7 @@ const Login = () => {
     }
   };
   return (
-    <section className="bg-gray-600 mt-2">
+    <section className="bg-gray-600 mt-2 min-h-screen">
       <div
         className="flex flex-col items-center
                     justify-center px-6 py-8
