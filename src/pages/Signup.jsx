@@ -55,9 +55,9 @@ const Signup = () => {
         <div
           className="w-full rounded-xl
                     shadow border md:mt-0 sm:max-w-md xl:p-0 
-                  bg-gray-800 border-gray-700"
+                  bg-gray-800 border-gray-700 mt-32"
         >
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8 ">
             <h1
               className="text-xl text-center font-semibold
                        md:text-2xl text-white"
@@ -143,8 +143,8 @@ const Signup = () => {
                 </p>
                 <button
                   type="submit"
-                  className="mt-5 py-2 px-8 bg-gradient-to-r from-cyan-600
-                   to-blue-600 rounded-lg text-white ml-32"
+                  className=" mt-5 py-2 px-8 bg-gradient-to-r from-cyan-600
+                   to-blue-600 rounded-lg text-white ml-28 md:ml-32"
                 >
                   Sign up
                 </button>

@@ -37,6 +37,7 @@ const Login = () => {
     } catch (error) {
       toast.error(error.response.data.message);
       setIsAuthenticated(false)
+      console.log(error);
     }
   };
   return (
@@ -49,7 +50,7 @@ const Login = () => {
         <div
           className="w-full rounded-xl
                     shadow border md:mt-0 sm:max-w-md xl:p-0 
-                  bg-gray-800 border-gray-700"
+                  bg-gray-800 border-gray-700 mt-36"
         >
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1
@@ -115,7 +116,7 @@ const Login = () => {
                 <button
                   type="submit"
                   className="mt-5 py-2 px-8 bg-gradient-to-r from-cyan-600
-                   to-blue-600 rounded-lg text-white ml-32"
+                   to-blue-600 rounded-lg text-white ml-28 md:ml-32 "
                 >
                   Login
                 </button>
