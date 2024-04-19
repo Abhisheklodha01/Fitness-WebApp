@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { Context } from "../index.js";
 
 const Signup = () => {
-  const { setIsAuthenticated, setUser } = useContext(Context);
+  const { setIsAuthenticated, setUser, isAuthenticated } = useContext(Context);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -45,6 +45,10 @@ const Signup = () => {
       setPassword("");
     }
   };
+  
+  if (isAuthenticated === true && window.location.pathname.startsWith("/signup") ) {
+    navigate("/home")
+}
   return (
     <section className="bg-gray-600 mt-2 min-h-screen">
       <div

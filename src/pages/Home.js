@@ -14,25 +14,30 @@ const Home = () => {
   const { isAuthenticated, setUser } = useContext(Context)
   const [exercises, setExercises] = useState([])
   const [bodyPart, setBodyPart] = useState('all')
-  if (isAuthenticated === false) {
+  useEffect(() => {
+    axios
+      .get(`${server}/users/userdetails`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setUser(res.data.user)
+        console.log(res.data.user);
+
+      })
+      .catch((error) => {
+        setUser({}),
+          error.response.data.message;
+      });
+  }, [])
+
+  if (
+    isAuthenticated === true &&
+    window.location.pathname.startsWith("/")
+  ) {
+    navigate("/home");
+  } else if (isAuthenticated === false ) {
     navigate("/")
   }
-
-    useEffect(()=> {
-     axios
-     .get(`${server}/users/userdetails`, {
-       withCredentials: true,
-     })
-     .then((res) => {
-       setUser(res.data.user)
-       console.log(res.data.user);
-
-     })
-     .catch((error) => {
-      setUser({}),
-      error.response.data.message;
-     });
-    }, [])
   return (
     <Box>
       <HeroBanner />

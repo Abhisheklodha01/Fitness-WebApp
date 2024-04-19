@@ -44,7 +44,7 @@ const Navbar = () => {
       {isAuthenticated === false ? "" : (
         <div className="flex gap-10 mt-4 text-2xl font-medium mr-4 md:mr-[25rem]">
           <Link
-            to="/"
+            to="/home"
             className="underline underline-offset-4 text-[#3A1212]
           decoration-[5px] decoration-amber-700"
           >

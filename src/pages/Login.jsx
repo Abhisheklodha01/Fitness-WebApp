@@ -7,13 +7,13 @@ import { Context } from "../index.js";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setIsAuthenticated, setUser } = useContext(Context);
+  const { setIsAuthenticated, setUser, isAuthenticated } = useContext(Context);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const submitHandeler = async (e) => {
     e.preventDefault();
     try {
-      const {data} = await axios.post(
+      const { data } = await axios.post(
         `${server}/users/login`,
         {
           email,
@@ -25,21 +25,27 @@ const Login = () => {
           },
           withCredentials: true,
         }
-      )
+      );
       toast.success(data.message, {
         position: "top-center",
       });
       setIsAuthenticated(true);
-      setUser(data.user)
+      setUser(data.user);
       setEmail("");
       setPassword("");
       navigate("/home");
     } catch (error) {
       toast.error(error.response.data.message);
-      setIsAuthenticated(false)
+      setIsAuthenticated(false);
       console.log(error);
     }
   };
+  if (
+    isAuthenticated === true &&
+    window.location.pathname.startsWith("/login")
+  ) {
+    navigate("/home");
+  } 
   return (
     <section className="bg-gray-600 mt-2 min-h-screen">
       <div
