@@ -11,7 +11,7 @@ import { server } from '../utils/constants.js'
 
 const Home = () => {
   const navigate = useNavigate()
-  const { isAuthenticated, setUser } = useContext(Context)
+  const { isAuthenticated, setUser} = useContext(Context)
   const [exercises, setExercises] = useState([])
   const [bodyPart, setBodyPart] = useState('all')
   useEffect(() => {
@@ -26,9 +26,10 @@ const Home = () => {
       })
       .catch((error) => {
         setUser({}),
-          error.response.data.message;
+        error.response.data.message;
+        console.log(error);
       });
-  }, [])
+  }, [isAuthenticated])
 
   if (
     isAuthenticated === true &&

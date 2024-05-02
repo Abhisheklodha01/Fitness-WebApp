@@ -44,7 +44,7 @@ const Navbar = () => {
       {isAuthenticated === false ? "" : (
         <div className="flex gap-10 mt-4 text-2xl font-medium mr-4 md:mr-[25rem]">
           <Link
-            to="/home"
+            to="/"
             className="underline underline-offset-4 text-[#3A1212]
           decoration-[5px] decoration-amber-700"
           >
@@ -162,7 +162,6 @@ const Navbar = () => {
                     <button
                       className="py-2 px-8 border-1  rounded-lg
                       bg-gradient-to-r from-sky-600 to-violet-700 text-lg"
-                      to=""
                       onClick={LogoutHandler}
                     >
                       Logout
