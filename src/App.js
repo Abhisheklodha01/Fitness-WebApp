@@ -16,28 +16,41 @@ import axios from 'axios'
 import { Context } from './index.js'
 
 function App() {
-  
 
- const {isAuthenticated, setUser, setIsAuthenticated} = useContext(Context) 
-const token = localStorage.getItem("token")
-useEffect(() => {
-  axios
-    .get(`${server}/users/userdetails`, {
-      withCredentials: true,
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      }
-    
-    })
-    .then((res) => {
-      setUser(res.data.user)
-      setIsAuthenticated(true)
-    })
-    .catch((error) => {
-      setUser({})
-    });
-}, [isAuthenticated])
-  
+  const { isAuthenticated, setUser, setIsAuthenticated } = useContext(Context)
+  const token = localStorage.getItem("token")
+  useEffect(() => {
+    axios
+      .get(`${server}/users/userdetails`, {
+        withCredentials: true,
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        }
+
+      })
+      .then((res) => {
+        setUser(res.data.user)
+        setIsAuthenticated(true)
+      })
+      .catch((error) => {
+        setUser({})
+      });
+  }, [isAuthenticated])
+
+  useEffect(() => {
+    const clearLocalStorageAfterDelay = () => {
+      const twentyFourHoursInMilliseconds = 24 * 60 * 60 * 1000;
+      setTimeout(() => {
+        localStorage.removeItem('token');
+      }, twentyFourHoursInMilliseconds);
+    };
+
+    clearLocalStorageAfterDelay();
+
+    return () => clearTimeout(clearLocalStorageAfterDelay);
+  }, []);
+
+
   return (
     <Box width="400px" sx={{ width: { xl: '1488px' } }} m='auto'>
       <BrowserRouter>
