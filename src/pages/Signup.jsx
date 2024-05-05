@@ -31,6 +31,7 @@ const Signup = () => {
       toast.success(data.message, {
         position: "top-center",
       });
+      localStorage.setItem("token", data.token)
       setIsAuthenticated(true);
       setUser(data.user)
       navigate("/home");

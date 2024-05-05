@@ -29,6 +29,7 @@ const Login = () => {
       toast.success(data.message, {
         position: "top-center",
       });
+      localStorage.setItem("token", data.token);
       setIsAuthenticated(true);
       setUser(data.user);
       setEmail("");
@@ -37,7 +38,6 @@ const Login = () => {
     } catch (error) {
       toast.error(error.response.data.message);
       setIsAuthenticated(false);
-      console.log(error);
     }
   };
   if (
@@ -45,7 +45,7 @@ const Login = () => {
     window.location.pathname.startsWith("/login")
   ) {
     navigate("/home");
-  } 
+  }
   return (
     <section className="bg-gray-600 mt-2 min-h-screen">
       <div

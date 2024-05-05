@@ -11,18 +11,8 @@ const Navbar = () => {
   const { setIsAuthenticated, isAuthenticated, user } = useContext(Context)
   const [nav, setNav] = useState(false)
   const LogoutHandler = async () => {
-    try {
-      await axios.post(`${server}/users/logout`, {
-        withCredentials: true,
-      })
-      toast.success("Logged out successfully", {
-        position: "top-center"
-      })
-      setIsAuthenticated(false)
-    } catch (error) {
-      console.log(error);
-      setIsAuthenticated(false)
-    }
+       localStorage.clear()
+       setIsAuthenticated(false)
   }
 
   return (
@@ -76,6 +66,7 @@ const Navbar = () => {
                   className="py-3 px-6 border-1  rounded-lg mr-5
                 bg-gradient-to-r from-sky-600 to-violet-700 text-lg mb-4"
                   onClick={LogoutHandler}
+                  to={"/"}
                 >
                   Logout
                 </Link>
@@ -112,7 +103,7 @@ const Navbar = () => {
         onClick={() => setNav(!nav)}
         className="md:hidden cursor-pointer pr-4  mt-4 text-gray-300 z-20 "
       >
-        {nav ? <FaTimes size={30} className="mr-14" /> : <FaBars size={30} />}
+        {nav ? <FaTimes size={30} className="mr-[90px]" /> : <FaBars size={30} />}
       </div>
 
       {

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import HomeImage from "../assets/images/HomeImgage.svg";
 import { Link } from "react-router-dom";
+import { Context } from '../index.js'
 
 const HomePage = () => {
+
+  const {isAuthenticated} = useContext(Context)
+
   return (
     <main
       className="flex h-[80vh] flex-col
@@ -14,7 +18,9 @@ const HomePage = () => {
           Welcome to our Fitness website
         </h1>
         <Link
-          to={"/signup"}
+          to={
+            isAuthenticated ? '/home' : "/signup"
+          }
           className="py-1 px-6 bg-gradient-to-r from-cyan-600
          to-blue-600 text-white rounded-lg text-center"
         >
