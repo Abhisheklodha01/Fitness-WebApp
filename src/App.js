@@ -14,10 +14,18 @@ import UserProfile from './components/UserProfile.jsx'
 import { server } from './utils/constants.js'
 import axios from 'axios'
 import { Context } from './index.js'
+import FitnessDetails from './pages/FitnessDetails.jsx'
 
 function App() {
 
-  const { isAuthenticated, setUser, setIsAuthenticated } = useContext(Context)
+  const {
+    isAuthenticated,
+    setUser,
+    setIsAuthenticated,
+    setUserFitness,
+    fitness,
+    setFitnessSuggetion,
+  } = useContext(Context)
   const token = localStorage.getItem("token")
   useEffect(() => {
     axios
@@ -36,6 +44,41 @@ function App() {
         setUser({})
       });
   }, [isAuthenticated])
+
+  useEffect(() => {
+    axios
+      .get(`${server}/users/getfitnessdetails`, {
+        withCredentials: true,
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        }
+
+      })
+      .then((res) => {
+        setUserFitness(res.data.userFitness)
+      })
+      .catch((error) => {
+        setUser({})
+      });
+  }, [isAuthenticated, fitness,])
+
+
+  useEffect(() => {
+    axios
+      .get(`${server}/users/getfitnesssuggetion`, {
+        withCredentials: true,
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        }
+
+      })
+      .then((res) => {
+        setFitnessSuggetion(res.data.fitnessSuggetion)
+      })
+      .catch((error) => {
+        setUser({})
+      });
+  }, [isAuthenticated, fitness,])
 
   useEffect(() => {
     const clearLocalStorageAfterDelay = () => {
@@ -59,6 +102,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/fitnessdetails' element={<FitnessDetails />} />
           <Route path='/home' element={<Home />} />
           <Route path='/exercise/:id' element={<ExerciseDetail />} />
           <Route path='/user' element={<UserProfile />} />

@@ -9,6 +9,9 @@ export const Context = createContext({ isAuthenticated: false });
 const AppWrapper = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState({})
+  const [userFitness, setUserFitness] = useState({})
+  const [fitnessSuggetion, setFitnessSuggetion] = useState(null)
+  const [fitness, setFitness] = useState(false)
 
   return (
     <Context.Provider
@@ -16,7 +19,14 @@ const AppWrapper = () => {
         isAuthenticated,
         setIsAuthenticated,
         user,
-        setUser
+        setUser,
+        userFitness,
+        setUserFitness,
+        fitnessSuggetion,
+        setFitnessSuggetion,
+        fitness,
+        setFitness
+      
       }}
     >
       <App />

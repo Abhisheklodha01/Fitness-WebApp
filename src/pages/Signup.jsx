@@ -34,7 +34,7 @@ const Signup = () => {
       localStorage.setItem("token", data.token)
       setIsAuthenticated(true);
       setUser(data.user)
-      navigate("/home");
+      navigate("/fitnessdetails");
       setEmail("");
       setUsername("");
       setPassword("");
