@@ -11,8 +11,8 @@ const Navbar = () => {
   const { setIsAuthenticated, isAuthenticated, user } = useContext(Context)
   const [nav, setNav] = useState(false)
   const LogoutHandler = async () => {
-       localStorage.clear()
-       setIsAuthenticated(false)
+    localStorage.clear()
+    setIsAuthenticated(false)
   }
 
   return (
@@ -34,17 +34,18 @@ const Navbar = () => {
       {isAuthenticated === false ? "" : (
         <div className="flex gap-10 mt-4 text-2xl font-medium mr-4 md:mr-[25rem]">
           <Link
-            to="/"
+            to="/home"
             className="underline underline-offset-4 text-[#3A1212]
           decoration-[5px] decoration-amber-700"
           >
             Home
           </Link>
           <a
-            to="#exercises"
-            style={{ textDecoration: "none", color: "#3A1212" }}
-          >
+            href="#exercises"
+            style={{ textDecoration: "none", color: "#3A1212" }} >
+
             Exercises
+
           </a>
         </div>
       )}
@@ -119,7 +120,7 @@ const Navbar = () => {
                       className="py-3 px-4 border-1  rounded-lg
                   bg-gradient-to-r from-cyan-600 to-blue-600 text-lg"
                       to="/signup"
-                      onClick={()=> setNav(false)}
+                      onClick={() => setNav(false)}
                     >
                       Sign Up
                     </Link>
@@ -129,7 +130,7 @@ const Navbar = () => {
                       className="py-3 px-6 border-1  rounded-lg
                   bg-gradient-to-r from-sky-600 to-violet-700 text-lg"
                       to="/login"
-                      onClick={()=> setNav(false)}
+                      onClick={() => setNav(false)}
                     >
                       Login
                     </Link>
@@ -143,7 +144,7 @@ const Navbar = () => {
                     <Link
                       className="py-3 px-4 border-1  rounded-lg
                       bg-gradient-to-r from-cyan-600 to-blue-600 text-lg"
-                      onClick={()=> setNav(false)}
+                      onClick={() => setNav(false)}
                       to={"/user"}
                     >
                       My Profile

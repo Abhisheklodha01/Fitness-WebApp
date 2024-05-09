@@ -13,17 +13,6 @@ const Home = () => {
   const { isAuthenticated, setUser} = useContext(Context)
   const [exercises, setExercises] = useState([])
   const [bodyPart, setBodyPart] = useState('all')
-
-  if (
-    isAuthenticated === true &&
-    window.location.pathname.startsWith("/")
-  ) {
-    navigate("/home");
-  } 
-
-  if(isAuthenticated === false) {
-    navigate("/")
-  }
   
   return (
     <Box>

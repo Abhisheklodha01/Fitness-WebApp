@@ -6,7 +6,6 @@ import { Context } from '../index.js'
 const HomePage = () => {
 
   const {isAuthenticated} = useContext(Context)
-
   return (
     <main
       className="flex h-[80vh] flex-col

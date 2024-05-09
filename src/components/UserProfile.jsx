@@ -52,10 +52,10 @@ const UserProfile = () => {
               {Object.entries(fitnessSuggetion.dietPlan).map(
                 ([meal, description]) => (
                   <li key={meal}>
-                    <h3 className="mt-5 mb-5 font-semibold text-gray-100">
+                    <h3 className="mt-5 mb-5 font-semibold text-amber-600">
                       {meal.toUpperCase()}:
                     </h3>
-                    <p className="text-lg">{description}</p>
+                    <p className="text-xl text-[#FFE0B5]">{description}</p>
                   </li>
                 )
               )}
@@ -64,14 +64,14 @@ const UserProfile = () => {
             <h2 className="text-gray-200 font-bold text-2xl ml-5 md:ml-2 mt-5">
               Exercise Routine
             </h2>
-            <ul className=" flex-row justify-evenly text-gray-200 text-xl ">
+            <ul className=" flex-row justify-evenly text-gray-200 text-xl md:ml-[74px] ">
               {Object.entries(fitnessSuggetion.exerciseRoutine).map(
                 ([day, activity]) => (
                   <li key={day}>
-                    <h3 className="mt-5 mb-5 font-semibold text-gray-100">
+                    <h3 className="mt-5 mb-5 font-semibold text-amber-600">
                       {day.toLocaleUpperCase()}:
                     </h3>
-                    <p className="text-lg mb-5">{activity}</p>
+                    <p className="text-xl mb-5 text-[#FFE0B5]">{activity}</p>
                   </li>
                 )
               )}
