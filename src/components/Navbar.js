@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from '../index.js'
 import Logo from "../assets/images/Logo.png";
 import axios from "axios";
@@ -13,6 +13,7 @@ const Navbar = () => {
   const LogoutHandler = async () => {
     localStorage.clear()
     setIsAuthenticated(false)
+    setNav(!nav)
   }
 
   return (
@@ -151,13 +152,15 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li className="x-4 cursor-pointer capitalize py-6 text-4xl">
-                    <button
+                    <Link
                       className="py-2 px-8 border-1  rounded-lg
                       bg-gradient-to-r from-sky-600 to-violet-700 text-lg"
                       onClick={LogoutHandler}
+                      to={"/"}
+                      
                     >
                       Logout
-                    </button>
+                    </Link>
                   </li>
                 </ul>
               )
