@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "animate-spin": "spin 1s linear infinite"
+      }
+    },
   },
   plugins: [],
 }

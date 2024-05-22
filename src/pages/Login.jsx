@@ -4,6 +4,7 @@ import axios from "axios";
 import { server } from "../utils/constants.js";
 import toast from "react-hot-toast";
 import { Context } from "../index.js";
+import LoaderImage from '../assets/icons/loader.svg'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -125,19 +126,9 @@ const Login = () => {
                 </p>
                 <div>
                   {loading ? (
-                    <button
-                      type="button"
-                      className="bg-indigo-500 ..."
-                      disabled
-                    >
-                      <svg
-                        className="animate-spin h-5 w-5 mr-3 ..."
-                        viewBox="0 0 24 24"
-                      >
-                        {/* ... */}
-                      </svg>
-                      Processing...
-                    </button>
+                    <img src={LoaderImage} alt="loader..."
+                    className="h-8 w-44 mt-5 ml-14 md:ml-24 rounded-lg"
+                    />
                   ) : (
                     <button
                       type="submit"
