@@ -5,21 +5,20 @@ import { server } from "../utils/constants.js";
 import toast from "react-hot-toast";
 import { Context } from "../index.js";
 
-
 const FitnessDetails = () => {
-  const {setFitness} = useContext(Context)
+  const { setFitness } = useContext(Context);
   const navigate = useNavigate();
   const [age, setAge] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [gender, setGender] = useState("");
   const [goal, setGoal] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const token = localStorage.getItem("token");
   const submitHandeler = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true)
+      setLoading(true);
       const { data } = await axios.post(
         `${server}/users/fitnessdetails`,
         {
@@ -43,13 +42,13 @@ const FitnessDetails = () => {
           position: "top-center",
         }
       );
-      setFitness(true)
-      setLoading(false)
+      setFitness(true);
+      setLoading(false);
       navigate("/home");
     } catch (error) {
       toast.error("Error while capturing fitness details");
-      setFitness(false)
-      setLoading(false)
+      setFitness(false);
+      setLoading(false);
       console.log(error);
     }
   };
@@ -185,11 +184,19 @@ const FitnessDetails = () => {
                 />
                 <div>
                   {loading ? (
-                    <button type="button" class="bg-indigo-500 ..." disabled>
-                    <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-                    </svg>
-                    Processing...
-                  </button>
+                    <button
+                      type="button"
+                      className="bg-indigo-500 ..."
+                      disabled
+                    >
+                      <svg
+                        className="animate-spin h-5 w-5 mr-3 ..."
+                        viewBox="0 0 24 24"
+                      >
+                        {/* ... */}
+                      </svg>
+                      Processing...
+                    </button>
                   ) : (
                     <button
                       type="submit"

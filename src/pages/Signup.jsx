@@ -11,11 +11,11 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const submitHandeler = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true)
+      setLoading(true);
       const { data } = await axios.post(
         `${server}/users/register`,
         {
@@ -33,10 +33,10 @@ const Signup = () => {
       toast.success(data.message, {
         position: "top-center",
       });
-      localStorage.setItem("token", data.token)
+      localStorage.setItem("token", data.token);
       setIsAuthenticated(true);
-      setLoading(false)
-      setUser(data.user)
+      setLoading(false);
+      setUser(data.user);
       navigate("/fitnessdetails");
       setEmail("");
       setUsername("");
@@ -47,13 +47,16 @@ const Signup = () => {
       setEmail("");
       setUsername("");
       setPassword("");
-      setLoading(false)
+      setLoading(false);
     }
   };
-  
-  if (isAuthenticated === true && window.location.pathname.startsWith("/signup") ) {
-    navigate("/home")
-}
+
+  if (
+    isAuthenticated === true &&
+    window.location.pathname.startsWith("/signup")
+  ) {
+    navigate("/home");
+  }
   return (
     <section className="bg-gray-600 mt-2 min-h-screen">
       <div
@@ -152,11 +155,19 @@ const Signup = () => {
                 </p>
                 <div>
                   {loading ? (
-                    <button type="button" class="bg-indigo-500 ..." disabled>
-                    <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-                    </svg>
-                    Processing...
-                  </button>
+                    <button
+                      type="button"
+                      className="bg-indigo-500 ..."
+                      disabled
+                    >
+                      <svg
+                        className="animate-spin h-5 w-5 mr-3 ..."
+                        viewBox="0 0 24 24"
+                      >
+                        {/* ... */}
+                      </svg>
+                      Processing...
+                    </button>
                   ) : (
                     <button
                       type="submit"
