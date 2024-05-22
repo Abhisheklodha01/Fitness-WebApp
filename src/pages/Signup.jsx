@@ -4,6 +4,7 @@ import axios from "axios";
 import { server } from "../utils/constants.js";
 import toast from "react-hot-toast";
 import { Context } from "../index.js";
+import Loader from "../components/Loader.js";
 
 const Signup = () => {
   const { setIsAuthenticated, setUser, isAuthenticated } = useContext(Context);
@@ -11,9 +12,11 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false)
   const submitHandeler = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true)
       const { data } = await axios.post(
         `${server}/users/register`,
         {
@@ -33,6 +36,7 @@ const Signup = () => {
       });
       localStorage.setItem("token", data.token)
       setIsAuthenticated(true);
+      setLoading(false)
       setUser(data.user)
       navigate("/fitnessdetails");
       setEmail("");
@@ -44,6 +48,7 @@ const Signup = () => {
       setEmail("");
       setUsername("");
       setPassword("");
+      setLoading(false)
     }
   };
   
@@ -146,13 +151,19 @@ const Signup = () => {
                     <span style={{ color: "blue" }}>Login here</span>
                   </Link>
                 </p>
-                <button
-                  type="submit"
-                  className=" mt-5 py-2 px-8 bg-gradient-to-r from-cyan-600
-                   to-blue-600 rounded-lg text-white ml-28 md:ml-32"
-                >
-                  Sign up
-                </button>
+                <div>
+                  {loading ? (
+                    <Loader className="h-2" />
+                  ) : (
+                    <button
+                      type="submit"
+                      className="mt-5 py-2 px-8 bg-gradient-to-r from-cyan-600
+                   to-blue-600 rounded-lg text-white ml-28 md:ml-32 "
+                    >
+                      Sign Up
+                    </button>
+                  )}
+                </div>
               </div>
             </form>
           </div>

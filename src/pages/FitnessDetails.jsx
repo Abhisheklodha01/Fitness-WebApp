@@ -14,10 +14,12 @@ const FitnessDetails = () => {
   const [weight, setWeight] = useState("");
   const [gender, setGender] = useState("");
   const [goal, setGoal] = useState("");
+  const [loading, setLoading] = useState(false)
   const token = localStorage.getItem("token");
   const submitHandeler = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true)
       const { data } = await axios.post(
         `${server}/users/fitnessdetails`,
         {
@@ -42,10 +44,12 @@ const FitnessDetails = () => {
         }
       );
       setFitness(true)
+      setLoading(false)
       navigate("/home");
     } catch (error) {
       toast.error("Error while capturing fitness details");
       setFitness(false)
+      setLoading(false)
       console.log(error);
     }
   };
@@ -179,13 +183,19 @@ const FitnessDetails = () => {
                   onChange={(e) => setGoal(e.target.value)}
                   value={goal}
                 />
-                <button
-                  type="submit"
-                  className=" mt-5 py-2 px-8 bg-gradient-to-r from-cyan-600
-                   to-blue-600 rounded-lg text-white ml-28 md:ml-32"
-                >
-                  Submit Details
-                </button>
+                <div>
+                  {loading ? (
+                    <Loader className="h-2" />
+                  ) : (
+                    <button
+                      type="submit"
+                      className="mt-5 py-2 px-8 bg-gradient-to-r from-cyan-600
+                   to-blue-600 rounded-lg text-white ml-28 md:ml-32 "
+                    >
+                      Submit Details
+                    </button>
+                  )}
+                </div>
               </div>
             </form>
           </div>
