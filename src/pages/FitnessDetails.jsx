@@ -4,7 +4,7 @@ import axios from "axios";
 import { server } from "../utils/constants.js";
 import toast from "react-hot-toast";
 import { Context } from "../index.js";
-import { FaLaptopHouse } from "react-icons/fa";
+
 
 const FitnessDetails = () => {
   const {setFitness} = useContext(Context)
@@ -185,7 +185,11 @@ const FitnessDetails = () => {
                 />
                 <div>
                   {loading ? (
-                    <Loader className="h-2" />
+                    <button type="button" class="bg-indigo-500 ..." disabled>
+                    <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+                    </svg>
+                    Processing...
+                  </button>
                   ) : (
                     <button
                       type="submit"

@@ -4,7 +4,6 @@ import axios from "axios";
 import { server } from "../utils/constants.js";
 import toast from "react-hot-toast";
 import { Context } from "../index.js";
-import Loader from "../components/Loader.js";
 
 const Signup = () => {
   const { setIsAuthenticated, setUser, isAuthenticated } = useContext(Context);
@@ -153,7 +152,11 @@ const Signup = () => {
                 </p>
                 <div>
                   {loading ? (
-                    <Loader className="h-2" />
+                    <button type="button" class="bg-indigo-500 ..." disabled>
+                    <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+                    </svg>
+                    Processing...
+                  </button>
                   ) : (
                     <button
                       type="submit"
